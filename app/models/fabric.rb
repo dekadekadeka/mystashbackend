@@ -1,6 +1,6 @@
 class Fabric < ApplicationRecord
   belongs_to :user
-  belongs_to :shopping_list
+  has_and_belongs_to_many :shopping_lists
 end
 
 # == Schema Information
