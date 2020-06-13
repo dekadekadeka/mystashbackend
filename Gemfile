@@ -14,7 +14,9 @@ gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
+gem 'rack-cors'
 # GraphQL
 gem 'graphql'
 
@@ -27,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate', '~> 3.0'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
