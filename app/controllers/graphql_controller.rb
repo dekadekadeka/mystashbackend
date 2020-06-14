@@ -27,10 +27,8 @@ class GraphqlController < ApplicationController
   end
 
   def decoded_token
-    # change back after frontend is done
     if auth_header
     token = auth_header.split(' ')[1]
-    # token = session[:token]
       begin
         JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
       rescue JWT::DecodeError
