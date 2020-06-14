@@ -7,13 +7,13 @@ class Pattern < ApplicationRecord
   has_and_belongs_to_many :shopping_lists
 
   enum brand: {
-    simplicity: 0,
-    mccalls: 1,
-    butterick: 2,
-    vogue: 3, 
-    new_look: 4,
-    burda: 5,
-    kwiksew: 6,
+    "Simplicity": 0,
+    "McCalls": 1,
+    "Butterick": 2,
+    "Vogue": 3, 
+    "New Look": 4,
+    "Burda": 5,
+    "Kwiksew": 6,
     other: 7,
   }
 end
