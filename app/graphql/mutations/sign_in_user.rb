@@ -17,7 +17,7 @@ module Mutations
       return unless user
       return unless user.authenticate(credentials[:password])
 
-      token = JWT.encode({id: user.id}, Rails.application.credentials.secret_key_base)
+      token = JWT.encode({user_id: user.id}, Rails.application.credentials.secret_key_base)
 
       context[:session][:token] = token
 
