@@ -17,8 +17,7 @@ module Mutations
       return unless user
       return unless user.authenticate(credentials[:password])
 
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
-      token = crypt.encrypt_and_sign("user-id:#{ user.id }")
+      token = JWT.encode({id: user.id}, Rails.application.credentials.secret_key_base)
 
       context[:session][:token] = token
 
