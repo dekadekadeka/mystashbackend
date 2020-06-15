@@ -4,8 +4,6 @@ class Pattern < ApplicationRecord
   has_many :projects
   has_many :users, through: :projects
 
-  has_and_belongs_to_many :shopping_lists
-
   enum brand: {
     "Simplicity": 0,
     "McCalls": 1,
@@ -24,7 +22,7 @@ end
 #
 #  id         :bigint           not null, primary key
 #  back_pic   :string
-#  brand      :integer          default("simplicity")
+#  brand      :integer          default("Simplicity")
 #  front_pic  :string
 #  number     :string
 #  created_at :datetime         not null

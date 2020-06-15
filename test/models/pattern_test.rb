@@ -12,7 +12,7 @@ end
 #
 #  id         :bigint           not null, primary key
 #  back_pic   :string
-#  brand      :integer          default("simplicity")
+#  brand      :integer          default("Simplicity")
 #  front_pic  :string
 #  number     :string
 #  created_at :datetime         not null

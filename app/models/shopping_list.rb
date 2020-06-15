@@ -1,12 +1,5 @@
 class ShoppingList < ApplicationRecord
   belongs_to :user
-
-  has_and_belongs_to_many :fabrics
-  has_and_belongs_to_many :flosses
-  has_and_belongs_to_many :needles
-  has_and_belongs_to_many :notions
-  has_and_belongs_to_many :patterns
-  has_and_belongs_to_many :yarns
 end
 
 # == Schema Information

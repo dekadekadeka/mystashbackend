@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_192145) do
+ActiveRecord::Schema.define(version: 2020_06_07_183806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_192145) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "fabrics_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "fabric_id"
-    t.bigint "shopping_list_id"
-    t.index ["fabric_id"], name: "index_fabrics_shopping_lists_on_fabric_id"
-    t.index ["shopping_list_id"], name: "index_fabrics_shopping_lists_on_shopping_list_id"
-  end
-
   create_table "flosses", force: :cascade do |t|
     t.string "brand"
     t.string "color"
@@ -41,25 +34,11 @@ ActiveRecord::Schema.define(version: 2020_06_07_192145) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "flosses_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "floss_id"
-    t.bigint "shopping_list_id"
-    t.index ["floss_id"], name: "index_flosses_shopping_lists_on_floss_id"
-    t.index ["shopping_list_id"], name: "index_flosses_shopping_lists_on_shopping_list_id"
-  end
-
   create_table "needles", force: :cascade do |t|
     t.string "needle_type"
     t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "needles_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "needle_id"
-    t.bigint "shopping_list_id"
-    t.index ["needle_id"], name: "index_needles_shopping_lists_on_needle_id"
-    t.index ["shopping_list_id"], name: "index_needles_shopping_lists_on_shopping_list_id"
   end
 
   create_table "notions", force: :cascade do |t|
@@ -72,13 +51,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_192145) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "notions_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "notion_id"
-    t.bigint "shopping_list_id"
-    t.index ["notion_id"], name: "index_notions_shopping_lists_on_notion_id"
-    t.index ["shopping_list_id"], name: "index_notions_shopping_lists_on_shopping_list_id"
-  end
-
   create_table "patterns", force: :cascade do |t|
     t.integer "brand", default: 0
     t.string "number"
@@ -86,13 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_192145) do
     t.string "back_pic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "patterns_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "pattern_id"
-    t.bigint "shopping_list_id"
-    t.index ["pattern_id"], name: "index_patterns_shopping_lists_on_pattern_id"
-    t.index ["shopping_list_id"], name: "index_patterns_shopping_lists_on_shopping_list_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -130,13 +95,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_192145) do
     t.string "pic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "yarns_shopping_lists", id: false, force: :cascade do |t|
-    t.bigint "yarn_id"
-    t.bigint "shopping_list_id"
-    t.index ["shopping_list_id"], name: "index_yarns_shopping_lists_on_shopping_list_id"
-    t.index ["yarn_id"], name: "index_yarns_shopping_lists_on_yarn_id"
   end
 
   add_foreign_key "projects", "patterns"
