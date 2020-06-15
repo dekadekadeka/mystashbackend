@@ -7,8 +7,6 @@ class User < ApplicationRecord
   has_many :projects
   has_many :patterns, through: :projects
 
-  has_many :shopping_lists
-
   has_many :yarns
   has_many :notions
   has_many :fabrics
