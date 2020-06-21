@@ -6,7 +6,6 @@ module Types
     field :notions, [Types::NotionType], null: false
     field :patterns, [Types::PatternType], null: false
     field :projects, [Types::ProjectType], null: false
-    field :shopping_lists, [Types::ShoppingListType], null: false
     field :yarns, [Types::YarnType], null: false
     field :users, [Types::UserType], null: false, description: "Users"
 
@@ -32,10 +31,6 @@ module Types
 
     def projects
       Project.all
-    end
-
-    def shopping_lists
-      ShoppingList.all
     end
 
     def users
