@@ -1,5 +1,6 @@
 class Pattern < ApplicationRecord
   validates :number, uniqueness: true
+  before_create :pattern_front_pic, :pattern_back_pic
 
   has_many :projects
   has_many :users, through: :projects
@@ -14,6 +15,22 @@ class Pattern < ApplicationRecord
     "Kwiksew": 6,
     other: 7,
   }
+
+  def pattern_front_pic
+    self.front_pic || self.generic_front
+  end
+
+  def pattern_back_pic
+    self.back_pic || self.generic_back
+  end
+
+  def generic_front
+    "generic_front.jpg"
+  end
+
+  def generic_back
+    "generic_back.jpg"
+  end
 end
 
 # == Schema Information
