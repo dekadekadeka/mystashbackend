@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  validates_numericality_of :progress, :only_integer => true, :less_than_or_equal_to => 100
+
   belongs_to :pattern
   belongs_to :user
 end
@@ -8,6 +10,7 @@ end
 # Table name: projects
 #
 #  id         :bigint           not null, primary key
+#  progress   :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  pattern_id :bigint           not null
