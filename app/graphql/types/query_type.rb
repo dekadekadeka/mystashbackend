@@ -2,10 +2,10 @@ module Types
   class QueryType < Types::BaseObject
     field :fabrics, [Types::FabricType], null: false, description: "All Fabrics"
     field :flosses, [Types::FlossType], null: false
+    field :my_projects, [Types::MyProjectType], null: false
     field :needles, [Types::NeedleType], null: false
     field :notions, [Types::NotionType], null: false
     field :patterns, [Types::PatternType], null: false
-    field :projects, [Types::ProjectType], null: false
     field :yarns, [Types::YarnType], null: false
     field :users, [Types::UserType], null: false, description: "Users"
 
@@ -15,6 +15,10 @@ module Types
 
     def flosses
       Floss.all
+    end
+
+    def my_projects
+      MyProject.all
     end
 
     def needles
