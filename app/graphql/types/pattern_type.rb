@@ -8,7 +8,6 @@ module Types
     field :pattern_front_pic, String, null: false
     field :pattern_back_pic, String, null: false
 
-    field :projects, [Types::ProjectType], null: false
     field :users, [Types::UserType], null: false
   end
 end
