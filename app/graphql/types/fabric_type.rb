@@ -7,7 +7,7 @@ module Types
     field :description, String, null: true
     field :name, String, null: false
     field :pic, String, null: true
-
+# hello
     field :user, Types::UserType, null: false
   end
 end
