@@ -12,7 +12,7 @@
     size: Faker::Measurement.length,
     description: Faker::Company.bs,
     name: Faker::ProgrammingLanguage.name,
-    user: User.find(2)
+    user: User.find(1)
   )
 end
 
@@ -21,7 +21,7 @@ end
     brand: Faker::Cannabis.strain,
     color: Faker::Color.color_name,
     amount: Faker::Measurement.length,
-    user: User.find(2),
+    user: User.find(1)
   )
 end
 
@@ -29,7 +29,7 @@ end
   Needle.create!(
     needle_type: Faker::ElectricalComponents.electromechanical,
     size: rand(0..20),
-    user: User.find(2),
+    user: User.find(1)
   )
 end
 
@@ -40,14 +40,14 @@ end
     size: Faker::Measurement.height,
     description: Faker::Hacker.say_something_smart,
     color: Faker::Color.color_name,
-    user: User.find(2),
+    user: User.find(1)
   )
 end
 
 10.times do
   Pattern.create(
     brand: rand(0..6),
-    number: Faker::Alphanumeric.alphanumeric(number: 4, min_alpha: 1, min_numeric: 3),
+    number: Faker::Alphanumeric.alphanumeric(number: 4, min_alpha: 1, min_numeric: 3)
   )
 end
 
@@ -58,6 +58,6 @@ end
     color: Faker::Color.color_name,
     size: Faker::Measurement.length,
     lot: Faker::Alphanumeric.alphanumeric(number: 5),
-    user: User.find(2),
+    user: User.find(1)
   )
 end
