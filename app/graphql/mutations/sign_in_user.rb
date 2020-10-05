@@ -2,22 +2,22 @@ module Mutations
   class SignInUser < BaseMutation
     null true
 
-    argument :credentials, Types::AuthProviderCredentialsInput, required: false
+    argument :input, Types::AuthProviderCredentialsInput, required: false
 
     field :token, String, null: true
     field :user, Types::UserType, null: true
 
-    def resolve(credentials: nil)
+    def resolve(input: nil)
       # basic validation
-      return unless credentials
+      return unless input
 
-      user = User.find_by username: credentials[:username]
+      user = User.find_by username: input[:username]
 
       # ensures we have the correct user
       return unless user
-      return unless user.authenticate(credentials[:password])
+      return unless user.authenticate(input[:password])
 
-      token = JWT.encode({user_id: user.id}, Rails.application.credentials.secret_key_base)
+      token = JWT.encode({ user_id: user.id }, Rails.application.credentials.secret_key_base)
 
       context[:session][:token] = token
 
