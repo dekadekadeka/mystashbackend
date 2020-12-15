@@ -10,6 +10,10 @@ module Types
     field :yarns, [Types::YarnType], null: false
     field :users, [Types::UserType], null: false, description: "Users"
 
+    field :user, Types::UserType, null: false, description: "User by ID" do
+      argument :id, Integer, required: true
+    end
+
     def current_user
       context[:current_user]
     end
@@ -44,6 +48,10 @@ module Types
 
     def users
       User.all
+    end
+
+    def user(**args)
+      User.find(args[:id])
     end
 
     def yarns

@@ -1,15 +1,15 @@
 module Mutations
-  class CreateFloss < BaseMutation  
-      argument :brand, String, required: true
-      argument :color, String, required: true
-      argument :amount, String, required: false
+  class CreateFloss < BaseMutation
+    argument :brand, String, required: true
+    argument :color, String, required: true
+    argument :amount, String, required: false
 
     type Types::FlossType
 
     def resolve(brand: nil, color: nil, amount: nil)
       if context[:current_user].nil?
         raise GraphQL::ExecutionError,
-              "You need to sign in to perform this action"
+          "You need to sign in to perform this action"
       end
 
       Floss.create!(
