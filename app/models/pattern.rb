@@ -9,27 +9,29 @@ class Pattern < ApplicationRecord
     "Simplicity": 0,
     "McCalls": 1,
     "Butterick": 2,
-    "Vogue": 3, 
+    "Vogue": 3,
     "New Look": 4,
     "Burda": 5,
     "Kwiksew": 6,
-    other: 7,
+    other: 7
   }
 
+  scope :search, ->(q) { where('brand::text ILIKE ? OR number::text ILIKE ?', Pattern.brands[q].to_s, "%#{q}%") }
+
   def pattern_front_pic
-    self.front_pic || self.generic_front
+    front_pic || generic_front
   end
 
   def pattern_back_pic
-    self.back_pic || self.generic_back
+    back_pic || generic_back
   end
 
   def generic_front
-    "generic_front.jpg"
+    'generic_front.jpg'
   end
 
   def generic_back
-    "generic_back.jpg"
+    'generic_back.jpg'
   end
 end
 
