@@ -1,16 +1,18 @@
 module Types
   class QueryType < Types::BaseObject
     field :current_user, Types::UserType, null: true
-    field :fabrics, [Types::FabricType], null: false, description: "All Fabrics"
+    field :fabrics, [Types::FabricType], null: false, description: 'All Fabrics'
     field :flosses, [Types::FlossType], null: false
     field :my_projects, [Types::MyProjectType], null: false
     field :needles, [Types::NeedleType], null: false
     field :notions, [Types::NotionType], null: false
-    field :patterns, [Types::PatternType], null: false
+    field :patterns, Types::PatternSearchType, description: 'All Patterns', null: false do
+      argument :search, Types::SearchType, required: false
+    end
     field :yarns, [Types::YarnType], null: false
-    field :users, [Types::UserType], null: false, description: "Users"
+    field :users, [Types::UserType], null: false, description: 'Users'
 
-    field :user, Types::UserType, null: false, description: "User by ID" do
+    field :user, Types::UserType, null: false, description: 'User by ID' do
       argument :id, Integer, required: true
     end
 
@@ -38,8 +40,11 @@ module Types
       Notion.all
     end
 
-    def patterns
-      Pattern.all
+    def patterns(**args)
+      SearchHandler.new(
+        Pattern.all,
+        args[:search]
+      )
     end
 
     def projects
