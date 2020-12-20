@@ -1,18 +1,15 @@
 module Mutations
-  class CreatePattern < BaseMutation  
-      argument :brand, String, required: true
-      argument :number, String, required: true
-      argument :front_pic, String, required: false
-      argument :back_pic, String, required: false
+  class CreatePattern < BaseMutation
+    argument :pattern_input, Types::PatternInputType, required: true
 
     type Types::PatternType
 
-    def resolve(brand: nil, number: nil, front_pic: nil, back_pic: nil)
+    def resolve(pattern_input:)
       Pattern.create!(
-        brand: brand,
-        number: number,
-        front_pic: front_pic,
-        back_pic: back_pic,
+        brand: pattern_input.brand,
+        number: pattern_input.number,
+        front_pic: pattern_input.front_pic,
+        back_pic: pattern_input.back_pic
       )
     end
   end

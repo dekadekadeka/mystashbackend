@@ -6,6 +6,7 @@ module Types
     field :size, String, null: true
     field :description, String, null: true
     field :color, String, null: true
+    field :notion_pic, String, null: true
 
     field :user, Types::UserType, null: false
   end

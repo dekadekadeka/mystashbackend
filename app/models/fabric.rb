@@ -1,5 +1,13 @@
 class Fabric < ApplicationRecord
   belongs_to :user
+
+  def fabric_pic
+    pic || generic_pic
+  end
+
+  def generic_pic
+    'generic_fabric.jpg'
+  end
 end
 
 # == Schema Information

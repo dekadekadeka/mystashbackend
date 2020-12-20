@@ -6,7 +6,7 @@ module Types
     field :color, String, null: false
     field :size, String, null: false
     field :lot, String, null: true
-    field :pic, String, null: true
+    field :yarn_pic, String, null: true
 
     field :user, Types::UserType, null: false
   end

@@ -1,5 +1,13 @@
 class Yarn < ApplicationRecord
   belongs_to :user
+
+  def yarn_pic
+    pic || generic_pic
+  end
+
+  def generic_pic
+    'generic_yarn.jpg'
+  end
 end
 
 # == Schema Information
