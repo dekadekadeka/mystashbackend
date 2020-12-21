@@ -15,10 +15,11 @@ class GraphqlController < ApplicationController
     }
     result = MystashbackendSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
-  rescue => e
+  rescue StandardError => e
+    byebug
     raise e unless Rails.env.development?
 
-    handle_error_in_development e
+    handle_error_in_development(e)
   end
 
   private
@@ -41,8 +42,8 @@ class GraphqlController < ApplicationController
   def current_user
     return unless decoded_token
 
-      user_id = decoded_token[0]['user_id']
-      @user = User.find_by(id: user_id)
+    user_id = decoded_token[0]['user_id']
+    @user = User.find_by(id: user_id)
   end
 
   # Handle form data, JSON body, or a blank value
@@ -67,6 +68,6 @@ class GraphqlController < ApplicationController
     logger.error error.message
     logger.error error.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    render json: { errors: [{ message: error.message, backtrace: error.backtrace }], data: {} }, status: 500
   end
 end
