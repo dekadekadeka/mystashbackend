@@ -9,6 +9,9 @@ module Types
     field :update_pattern, mutation: Mutations::UpdatePattern
     field :destroy_pattern, mutation: Mutations::DestroyPattern
 
+    field :add_to_stash, mutation: Mutations::AddToStash
+    field :delete_from_stash, mutation: Mutations::DeleteFromStash
+
     field :create_my_project, mutation: Mutations::CreateMyProject
     field :create_user, mutation: Mutations::CreateUser
     field :create_yarn, mutation: Mutations::CreateYarn
