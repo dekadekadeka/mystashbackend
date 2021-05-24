@@ -13,6 +13,30 @@ class User < ApplicationRecord
   has_many :my_projects
   has_many :needles
   has_many :flosses
+
+  def patterns_count
+    patterns.count
+  end
+
+  def yarns_count
+    yarns.count
+  end
+
+  def notions_count
+    notions.count
+  end
+
+  def fabrics_count
+    fabrics.count
+  end
+
+  def needles_count
+    needles.count
+  end
+
+  def flosses_count
+    flosses.count
+  end
 end
 
 # == Schema Information
